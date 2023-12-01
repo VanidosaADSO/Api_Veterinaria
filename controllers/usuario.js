@@ -10,15 +10,25 @@ const getUsuarios = async (req, res) => {
 }
 
 const postUsuario = async (req, res) => {
-    const { Nombre, Apellido, Documento, Correo, Contrasena, Rol } = req.body
+    const { Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol } = req.body
+    
+    if (Rol === 'Veterinario') {
+        Agenda = 'disponible'
+        const usuario1 = new usuario({ Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol });
+        usuario1.Contrasena = bcrypt.hashSync(Contrasena, 10)
+        usuario1.save();
+        res.json({
+            usuario1
+        })
 
-    const usuario1 = new usuario({ Nombre, Apellido, Documento, Correo, Contrasena, Rol });
-    usuario1.Contrasena = bcrypt.hashSync(Contrasena, 10)
-    usuario1.save();
-
-    res.json({
-        usuario1
-    })
+    } else {
+        const usuario1 = new usuario({ Nombre, Apellido, Documento, Correo, Contrasena, Rol });
+        usuario1.Contrasena = bcrypt.hashSync(Contrasena, 10)
+        usuario1.save();
+        res.json({
+            usuario1
+        })
+    }
 }
 
 const putUsuario = async (req, res) => {

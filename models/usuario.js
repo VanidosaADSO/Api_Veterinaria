@@ -21,6 +21,9 @@ const usuarioSchema = Schema({
         type: String,
         required:[true, 'La contrasena es un campo obligatorio']
     },
+    Agenda:{
+        type: String,
+    },
     Rol: {
         type: String,
         required: [true, 'El rol es un campo obligatorio'],

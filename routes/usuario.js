@@ -12,14 +12,13 @@ router.post('/', [
 
     check('Apellido', 'El apellido es un campo obligatorio').not().isEmpty(),
 
-
     check('Documento', 'El documento debe tener minimo 8 dijitos').isLength({ min: 8 }),
 
     check('Correo', 'El correo no es valido').isEmail(),
 
     check('Contrasena', 'La contraseña debe contener minimo 8 caracteres').isLength({ min: 8 }),
 
-    check('Rol', 'El rol no es valido').isIn(['Administrador', 'Secretaria','Dueno']),
+    check('Rol', 'El rol no es valido').isIn(['Administrador', 'Veterinario','Secretaria','Dueno']),
 
     validarCampos
 ], postUsuario)
