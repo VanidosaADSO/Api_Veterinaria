@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const { dbConnetion } = require('../database/config')
+const fileUpload = require('express-fileupload');
 
 
 class Server {
@@ -14,6 +15,7 @@ class Server {
         this.conectarDB();
         this.middlewares();
         this.routes();
+        this.configureStaticFiles();
 
     }
 
@@ -32,12 +34,22 @@ class Server {
             preflightContinue: false,
             optionsSuccessStatus: 204,
         }));
+
+        this.app.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: '/tmp/',
+            createParentPath: true
+        }));
     }
 
     routes() {
         this.app.use(this.usuariosPath, require('../routes/usuario'));
         this.app.use(this.mascotasPath, require('../routes/mascota'));
         this.app.use(this.serviciosPath, require('../routes/servicio'));
+    }
+
+    configureStaticFiles() {
+        this.app.use('../uploads', express.static('uploads'));
     }
 
     listen() {

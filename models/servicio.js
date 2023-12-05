@@ -8,7 +8,11 @@ const servicioSchema = Schema({
     Descripcion:{
         type:String,
         required: [true, 'La descripciones un campo obligatorio'],
-    }
+    },
+    imagen: {
+        type: String,
+        required: [true, 'La imagen es un campo obligatorio']
+    },
 })
 
 module.exports = model('Servicio', servicioSchema)

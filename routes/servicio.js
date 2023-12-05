@@ -3,9 +3,7 @@ const router = Router();
 const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validar-campos')
 
-const { getServicio, postServicio, putServicio, deleteServicio } = require('../controllers/servicio')
-
-router.get('/', getServicio)
+const { getServicio, obtenerImagen, postServicio, putServicio, deleteServicio } = require('../controllers/servicio')
 
 router.post('/', [
     check('Nombre', 'EL campo nombre es obligatorio').not().isEmpty(),
@@ -15,8 +13,12 @@ router.post('/', [
     validarCampos
 ], postServicio)
 
-router.put('/',putServicio)
+router.get('/', getServicio)
 
-router.delete('/',deleteServicio)
+router.get('/obtenerImagen/:id', obtenerImagen);
+
+router.put('/', putServicio)
+
+router.delete('/', deleteServicio)
 
 module.exports = router
