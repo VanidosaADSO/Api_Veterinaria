@@ -11,11 +11,13 @@ const usuarioSchema = Schema({
     },
     Documento:{
         type: Number,
-        required:[true, 'El documento es un campo obligatorio']
+        required:[true, 'El documento es un campo obligatorio'],
+        unique: true
     },
     Correo:{
         type: String,
-        required:[true, 'El correo es un campo obligatorio']
+        required:[true, 'El correo es un campo obligatorio'],
+        unique: true
     },
     Contrasena:{
         type: String,

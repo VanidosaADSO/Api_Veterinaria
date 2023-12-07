@@ -12,6 +12,7 @@ class Server {
         this.usuariosPath = '/api/usuario';
         this.mascotasPath = '/api/mascota';
         this.serviciosPath = '/api/servicio';
+        this.authPath = '/api/auth';
         this.conectarDB();
         this.middlewares();
         this.routes();
@@ -46,6 +47,7 @@ class Server {
         this.app.use(this.usuariosPath, require('../routes/usuario'));
         this.app.use(this.mascotasPath, require('../routes/mascota'));
         this.app.use(this.serviciosPath, require('../routes/servicio'));
+        this.app.use(this.authPath, require('../routes/auth'));
     }
 
     configureStaticFiles() {

@@ -14,7 +14,7 @@ const postUsuario = async (req, res) => {
     
     if (Rol === 'Veterinario') {
 
-       const Agenda = 'disponible'
+        const Agenda = 'disponible'
         const usuario1 = new usuario({ Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol });
         usuario1.Contrasena = bcrypt.hashSync(Contrasena, 10)
         usuario1.save();

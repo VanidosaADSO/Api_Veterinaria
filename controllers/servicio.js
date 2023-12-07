@@ -88,7 +88,7 @@ const postServicio = async (req, res) => {
 const putServicio = async (req, res) => {
     const { _id, Nombre, Descripcion } = req.body;
 
-    const servicio = await servicio.findOne({ _id: _id });
+    const servicios = await servicio.findOne({ _id: _id });
 
     // Editar imagen 
     if (!req.files || Object.keys(req.files).length === 0 || !req.files.imagen) {
@@ -97,8 +97,8 @@ const putServicio = async (req, res) => {
     }
 
     try {
-        if (servicio.imagen) {
-            const pathImagenBorrar = path.join(__dirname, '../uploads', servicio.imagen);
+        if (servicios.imagen) {
+            const pathImagenBorrar = path.join(__dirname, '../uploads', servicios.imagen);
             if (fs.existsSync(pathImagenBorrar)) {
                 fs.unlinkSync(pathImagenBorrar)
             }
