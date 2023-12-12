@@ -32,6 +32,10 @@ const usuarioSchema = Schema({
         enum: ['Administrador', 'Secretaria', 'Veterinario','Dueno']
 
     },
+    Estado: {
+        type: Boolean,
+        default:true
+    }
 })
 
 module.exports = model('Usuario', usuarioSchema)

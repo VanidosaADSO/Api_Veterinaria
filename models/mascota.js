@@ -24,6 +24,10 @@ const MascotaSchema = Schema({
     Dueno:{
         type:String,
         required: [true, 'El dueno es un campo obligatorio']
+    },
+    Estado: {
+        type: Boolean,
+        default:true
     }
 
 })

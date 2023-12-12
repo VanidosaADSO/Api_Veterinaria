@@ -14,6 +14,7 @@ class Server {
         this.serviciosPath = '/api/servicio';
         this.authPath = '/api/auth';
         this.authResena = '/api/resena'
+        this.authCategoria = '/api/categoria'
         this.conectarDB();
         this.middlewares();
         this.routes();
@@ -50,6 +51,7 @@ class Server {
         this.app.use(this.serviciosPath, require('../routes/servicio'));
         this.app.use(this.authPath, require('../routes/auth'));
         this.app.use(this.authResena, require('../routes/resena'));
+        this.app.use(this.authCategoria, require('../routes/categoria'));
     }
 
     configureStaticFiles() {

@@ -10,12 +10,11 @@ const getUsuarios = async (req, res) => {
 }
 
 const postUsuario = async (req, res) => {
-    const { Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol } = req.body
-    
-    if (Rol === 'Veterinario') {
+    const { Nombre, Apellido, Documento, Correo, Contrasena, Rol, Estado } = req.body
 
+    if (Rol === 'Veterinario') {
         const Agenda = 'disponible'
-        const usuario1 = new usuario({ Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol });
+        const usuario1 = new usuario({ Nombre, Apellido, Documento, Agenda, Correo, Contrasena, Rol, Estado });
         usuario1.Contrasena = bcrypt.hashSync(Contrasena, 10)
         usuario1.save();
         res.json({
@@ -46,17 +45,18 @@ const putUsuario = async (req, res) => {
 }
 
 const patchUsuario = async (req, res) => {
-    const { _id, Contrasena } = req.body;
+    const { _id, Estado, Contrasena } = req.body;
+    if (Contrasena) {
+        const hashedPassword = await bcrypt.hash(Contrasena, 10);
+        await usuario.findOneAndUpdate(
+            { _id: _id },
+            { Contrasena: hashedPassword }
+        );
+    } else {
+        await usuario.findOneAndUpdate({ _id: _id }, { Estado: Estado });
+    }
 
-    const hashedPassword = await bcrypt.hash(Contrasena, 10);
-    await usuario.findOneAndUpdate(
-        { _id: _id },
-        { Contrasena: hashedPassword }
-    );
-
-    res.json({
-        message: 'Actualización realizada'
-    });
+    res.json({ message: 'Actualización realizada' });
 };
 
 const deleteUsuario = async (req, res) => {

@@ -3,7 +3,7 @@ const router = Router()
 const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validar-campos')
 
-const { getMascotas, postMascota, putMascota, deleteMascota } = require('../controllers/mascota')
+const { getMascotas, postMascota, putMascota, patchMascota, deleteMascota } = require('../controllers/mascota')
 
 router.get('/', getMascotas)
 
@@ -25,6 +25,8 @@ router.post('/', [
 ], postMascota)
 
 router.put('/', putMascota)
+
+router.patch('/', patchMascota)
 
 router.delete('/', deleteMascota)
 

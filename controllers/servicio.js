@@ -70,11 +70,9 @@ const postServicio = async (req, res) => {
         await mvPromise(uploadPath); // Espera a que se complete la operación de mover la imagen
 
         // Ahora puedes guardar la información del producto en la base de datos
-        const { Nombre, Descripcion } = req.body;
+        const { Nombre, Descripcion, Categoria, Estado } = req.body;
         const servicio1 = new servicio({
-            Nombre,
-            Descripcion,
-            imagen: nombreFinal, // Guarda el nombre del archivo en la base de datos
+            Nombre, Descripcion, Categoria, Estado, imagen: nombreFinal,
         });
         await servicio1.save()
 
@@ -86,7 +84,7 @@ const postServicio = async (req, res) => {
 };
 
 const putServicio = async (req, res) => {
-    const { _id, Nombre, Descripcion } = req.body;
+    const { _id, Nombre, Descripcion, Categoria } = req.body;
 
     const servicios = await servicio.findOne({ _id: _id });
 
@@ -127,11 +125,21 @@ const putServicio = async (req, res) => {
 
     const updatedProducto = await servicio.findByIdAndUpdate(
         { _id: _id },
-        { Nombre, Descripcion, imagen: nombreFinal }
+        { Nombre, Descripcion, Categoria, imagen: nombreFinal }
     );
     res.json({
         msg: "Servicio actualizado exitosamente",
         cita: updatedProducto
+    });
+};
+
+const patchServicio = async (req, res) => {
+    const { _id, Estado } = req.body;
+
+    const servicio1 = await servicio.findOneAndUpdate({ _id: _id }, { Estado });
+
+    res.json({
+        servicio1
     });
 };
 
@@ -149,6 +157,7 @@ module.exports = {
     getServicio,
     postServicio,
     putServicio,
+    patchServicio,
     deleteServicio,
     obtenerImagen,
     fileUpload

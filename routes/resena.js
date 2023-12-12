@@ -3,7 +3,7 @@ const router = Router()
 const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validar-campos')
 
-const { getResenas, postResena, putResena, deleteResena } = require('../controllers/resena')
+const { getResenas, postResena, putResena, patchResena, deleteResena } = require('../controllers/resena')
 
 router.get('/', getResenas)
 
@@ -20,6 +20,8 @@ router.post('/', [
 
 router.put('/', putResena)
 
-router.delete('/',deleteResena)
+router.patch('/',patchResena)
+
+router.delete('/', deleteResena)
 
 module.exports = router

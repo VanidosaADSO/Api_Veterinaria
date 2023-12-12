@@ -12,6 +12,10 @@ const ResenasSchema = Schema({
     Resena:{
         type:String,
         require:[true, 'La reseña es un campo obligatorio']
+    },
+    Estado: {
+        type: Boolean,
+        default:true
     }
 })
 
