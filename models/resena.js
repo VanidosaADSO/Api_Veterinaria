@@ -1,22 +1,26 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const ResenasSchema = Schema({
     Nombre: {
-        type:String,
-        require: [true, 'El nombre es un campo obligatorio']
+        type: String,
+        required: [true, 'El nombre es un campo obligatorio']
     },
-    Correo:{
-        type:String,
-        require: [true, 'El correo es un campo obligatorio']
+    Correo: {
+        type: String,
+        required: [true, 'El correo es un campo obligatorio']
     },
-    Resena:{
-        type:String,
-        require:[true, 'La reseña es un campo obligatorio']
+    Resena: {
+        type: String,
+        required: [true, 'La reseña es un campo obligatorio']
+    }, 
+    imagen: {
+        type: String,
+        required: [true, 'La imagen es un campo obligatorio']
     },
     Estado: {
         type: Boolean,
-        default:true
+        default: true
     }
 })
 
-module.exports =  model('Resena',ResenasSchema)
+module.exports = model('Resena', ResenasSchema)

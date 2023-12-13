@@ -3,9 +3,11 @@ const router = Router()
 const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validar-campos')
 
-const { getResenas, postResena, putResena, patchResena, deleteResena } = require('../controllers/resena')
+const { getResenas, obtenerImagen, postResena, putResena, patchResena, deleteResena } = require('../controllers/resena')
 
 router.get('/', getResenas)
+
+router.get('/obtenerImagen/:id', obtenerImagen);
 
 router.post('/', [
     check('Nombre', 'El nombre es un campo obligatorio').not().isEmpty(),
@@ -20,7 +22,7 @@ router.post('/', [
 
 router.put('/', putResena)
 
-router.patch('/',patchResena)
+router.patch('/', patchResena)
 
 router.delete('/', deleteResena)
 
