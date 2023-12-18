@@ -20,9 +20,9 @@ const CitaSchema = Schema({
         type: Date,
         required: [true, 'La fechaCita es un campo obligatorio']
     },
-    Diponibilidad: {
+    Disponibilidad: {
         type: String,
-        required: [true, 'La descripcion es un campo obligatorio']
+        required: [true, 'La disponibilidad es un campo obligatorio']
     },
     Cupon: {
         type: String,
@@ -34,4 +34,4 @@ const CitaSchema = Schema({
     }
 })
 
-module.exports = model('Citas', CitaSchema)
+module.exports = model('Cita', CitaSchema)
