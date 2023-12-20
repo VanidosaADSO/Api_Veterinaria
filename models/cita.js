@@ -13,7 +13,7 @@ const CitaSchema = Schema({
         required: [true, 'El documento del dueño de la mascota es obligatorio']
     },
     Servicios: {
-        type:String,
+        type:[ServicioShema],
         required: [true, 'Se tiene que agregar un servicio como minimo']
     },
     Fecha_Hora: {
