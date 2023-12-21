@@ -1,20 +1,23 @@
 const { Schema, model } = require('mongoose')
 
-const ServicioShema = Schema({
+const ServicioSchema = Schema({
     Nombre: {
         type: String,
         required: [true, 'El nombre del servicio es obligatorio']
     }
 })
-
 const CitaSchema = Schema({
     Documento:{
         type:Number,
         required: [true, 'El documento del dueño de la mascota es obligatorio']
     },
     Servicios: {
-        type:[ServicioShema],
+        type:[ServicioSchema],
         required: [true, 'Se tiene que agregar un servicio como minimo']
+    },
+    Mascota:{
+        type:String,
+        required: [true, 'El nombre de la mascota es obligatorio']
     },
     Fecha_Hora: {
         type: Date,

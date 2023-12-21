@@ -9,9 +9,9 @@ const getCitas = async (req, res) => {
 }
 
 const postCita = async (req, res) => {
-    const { Documento, Servicios, Fecha_Hora, Disponibilidad, Cupon, Estado } = req.body
+    const { Documento, Servicios, Mascota, Fecha_Hora, Disponibilidad, Cupon, Estado } = req.body
 
-    const cita1 = new cita({ Documento, Servicios, Fecha_Hora, Disponibilidad, Cupon, Estado })
+    const cita1 = new cita({ Documento, Servicios, Mascota, Fecha_Hora, Disponibilidad, Cupon, Estado })
 
     await cita1.save();
 
@@ -22,7 +22,7 @@ const postCita = async (req, res) => {
 
 const putcita = async (req, res) => {
 
-    const { _id, Documento, Servicios, Fecha_Hora, Disponibilidad, Cupon, Estado } = req.body;
+    const { _id, Documento, Servicios, Mascota, Fecha_Hora, Disponibilidad, Cupon, Estado } = req.body;
 
     if (Servicios && Array.isArray(Servicios)) {
         try {
@@ -53,7 +53,7 @@ const putcita = async (req, res) => {
             // Realiza la actualización en la base de datos        
             const updatedServicio = await cita.findByIdAndUpdate(
                 { _id: _id },
-                { Servicios: updatedServicios, Documento, Fecha_Hora, Disponibilidad, Cupon, Estado },
+                { Servicios: updatedServicios, Mascota, Documento, Fecha_Hora, Disponibilidad, Cupon, Estado },
                 { new: true }
             );
 
