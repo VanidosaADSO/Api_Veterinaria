@@ -19,6 +19,10 @@ const CitaSchema = Schema({
         type:String,
         required: [true, 'El nombre de la mascota es obligatorio']
     },
+    Veterinario:{
+        type:String,
+        required: [true, 'El veterinario es obligatorio ']
+    },
     Fecha_Hora: {
         type: Date,
         required: [true, 'La fechaCita es un campo obligatorio']

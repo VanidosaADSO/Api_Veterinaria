@@ -12,6 +12,7 @@ router.post('/', [
     check('Documento', 'El campo documento es obligatorio.'),
     check('Servicios', 'El campo servicios es obligatorio.'),
     check('Mascota', 'El campo mascota es obligatorio.'),
+    check('Veterinario', 'El campo veterinario es obligatorio.'),
     check('Fecha_Hora', 'El campo Fecha_Hora es obligatorio.'),
     check('Disponibilidad', 'El campo Diponibilidad es obligatorio.'),
     check('Cupon', 'El campo Cupon es obligatorio.'),
