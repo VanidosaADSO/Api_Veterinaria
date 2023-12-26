@@ -21,13 +21,13 @@ const postMascota = async (req, res) => {
 }
 
 const putMascota = async (req, res) => {
-    const { Nombre, Tipo, Raza, Edad, Color, Dueno,Estado } = req.body
+    const { _id, Nombre, Tipo, Raza, Edad, Color, Dueno, Estado } = req.body
 
-    const mascota1 = mascota.findOneAndUpdate({ _id: _id },
-        { Nombre: Nombre, Tipo: Tipo, Raza: Raza, Edad: Edad, Color: Color, Dueno: Dueno, Estado:Estado })
+    const mascota3 = await mascota.findOneAndUpdate({ _id: _id },
+        { Nombre: Nombre, Tipo: Tipo, Raza: Raza, Edad: Edad, Color: Color, Dueno: Dueno, Estado: Estado })
 
     res.json({
-        mascota1
+        mascota3
     })
 }
 
@@ -36,8 +36,8 @@ const patchMascota = async (req, res) => {
 
     const mascota1 = await mascota.findOneAndUpdate({ _id: _id }, { Estado });
 
-    res.json({ 
-        mascota1 
+    res.json({
+        mascota1
     });
 }
 
